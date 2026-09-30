@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CarryMate — Delete Account</title>
+<title>CarryMate — Send Anything, Anywhere, With Someone Already Going There</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -12,8 +12,6 @@
     --text: #1a1a1a;
     --text-muted: #6b7280;
     --accent: #0A7A5A;
-    --danger: #E24B4A;
-    --danger-bg: #FCEBEB;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -23,8 +21,6 @@
       --text: #eef0f3;
       --text-muted: #a3a9b3;
       --accent: #4ade80;
-      --danger: #f87171;
-      --danger-bg: #3a1e1e;
     }
   }
   * { box-sizing: border-box; }
@@ -33,170 +29,108 @@
     background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 32px 16px 64px;
+    line-height: 1.6;
   }
-  .card { max-width: 440px; width: 100%; }
-  h1 { font-size: 22px; margin: 0 0 6px; }
-  .sub { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
-  label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; margin-top: 16px; }
-  input {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    font-size: 15px;
+  .hero {
+    background: var(--accent);
+    color: #fff;
+    padding: 56px 20px 48px;
+    text-align: center;
   }
-  .info-box {
+  .hero h1 { font-size: 30px; margin: 0 0 10px; }
+  .hero p { font-size: 16px; opacity: 0.9; max-width: 480px; margin: 0 auto; }
+  .container { max-width: 680px; margin: 0 auto; padding: 40px 20px 64px; }
+  h2 { font-size: 20px; margin-top: 40px; margin-bottom: 12px; color: var(--accent); }
+  p, li { font-size: 15px; color: var(--text); }
+  ul { padding-left: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+  .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 14px;
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.55;
-    margin-top: 20px;
+    padding: 16px;
   }
-  button {
-    width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  #deleteBtn { background: var(--danger); color: #fff; }
-  #deleteBtn:disabled { opacity: 0.6; cursor: default; }
-  #cancelBtn { background: var(--surface); color: var(--text); border: 1px solid var(--border); margin-top: 10px; }
-  .status {
+  .card h3 { font-size: 15px; margin: 0 0 6px; }
+  .card p { font-size: 13px; color: var(--text-muted); margin: 0; }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 16px;
-    padding: 12px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-    display: none;
   }
-  .status.show { display: block; }
-  .status.error { background: var(--danger-bg); color: var(--danger); }
-  .status.success { background: #e0f5ec; color: #065C3D; }
-  #confirmStep { display: none; }
+  .links a {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .contact-box {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>Delete Your CarryMate Account</h1>
-  <p class="sub">This page lets you request permanent deletion of your CarryMate account and personal data, without needing the app installed. This action cannot be undone.</p>
 
-  <div id="loginStep">
-    <label for="email">Email</label>
-    <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-    <label for="password">Password</label>
-    <input id="password" type="password" placeholder="Your account password" autocomplete="current-password">
-    <button id="verifyBtn">Continue</button>
-    <div id="loginStatus" class="status"></div>
-  </div>
-
-  <div id="confirmStep">
-    <div class="info-box">
-      <strong>Before you continue:</strong><br>
-      • Your login access will be permanently destroyed<br>
-      • Your name, phone, photos, KYC documents, and payout details will be removed<br>
-      • Past transaction records are kept (without your personal details) for the other party's history and our financial records<br>
-      • If you have an active delivery or Discover transaction in progress, deletion will be blocked until it's complete or cancelled
-    </div>
-    <button id="deleteBtn">Yes, Permanently Delete My Account</button>
-    <button id="cancelBtn">Cancel</button>
-    <div id="deleteStatus" class="status"></div>
-  </div>
+<div class="hero">
+  <h1>CarryMate</h1>
+  <p>A platform connecting people who need to send packages or items with travelers already heading in that direction — and a marketplace to buy, sell, or request items across cities and countries.</p>
 </div>
 
-<script>
-  const SUPABASE_URL = 'https://yklhubffjqaauxnytglt.supabase.co';
-  const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrbGh1YmZmanFhYXV4bnl0Z2x0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MTg4MjcsImV4cCI6MjA5MTk5NDgyN30.UoqtCEcwXYObPimQA_QEJ3JEtL6g4gi5Q37s6MSNVUY';
+<div class="container">
 
-  let accessToken = null;
+  <h2>What CarryMate Does</h2>
+  <p>CarryMate connects two kinds of independent users:</p>
+  <div class="grid">
+    <div class="card">
+      <h3>📦 Senders</h3>
+      <p>People who need a package delivered, matched with a traveler already going that way.</p>
+    </div>
+    <div class="card">
+      <h3>✈️ Travelers</h3>
+      <p>People traveling who can carry an item along their route and earn money for it.</p>
+    </div>
+  </div>
+  <p style="margin-top: 12px;">CarryMate also includes <strong>Discover</strong>, a marketplace where users can buy, sell, or request items to be brought from another city or country.</p>
 
-  function showStatus(el, msg, type) {
-    el.textContent = msg;
-    el.className = 'status show ' + type;
-  }
+  <h2>How It Works</h2>
+  <ul>
+    <li>A sender posts a delivery request, or a buyer posts an item they want or have for sale</li>
+    <li>A matching traveler or interested user responds</li>
+    <li>Both parties agree, payment is collected securely, and the handover is confirmed with photo and OTP verification at each step</li>
+    <li>Funds are released to the traveler once delivery is confirmed</li>
+  </ul>
 
-  document.getElementById('verifyBtn').addEventListener('click', async () => {
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const statusEl = document.getElementById('loginStatus');
-    if (!email || !password) {
-      showStatus(statusEl, 'Please enter both email and password.', 'error');
-      return;
-    }
-    const btn = document.getElementById('verifyBtn');
-    btn.disabled = true;
-    btn.textContent = 'Verifying...';
-    try {
-      const res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
-        method: 'POST',
-        headers: { 'apikey': ANON_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.access_token) {
-        showStatus(statusEl, 'Incorrect email or password. Please try again.', 'error');
-        btn.disabled = false;
-        btn.textContent = 'Continue';
-        return;
-      }
-      accessToken = data.access_token;
-      document.getElementById('loginStep').style.display = 'none';
-      document.getElementById('confirmStep').style.display = 'block';
-    } catch (err) {
-      showStatus(statusEl, 'Something went wrong. Please try again.', 'error');
-      btn.disabled = false;
-      btn.textContent = 'Continue';
-    }
-  });
+  <h2>Payments</h2>
+  <p>All payments on CarryMate are processed securely through Razorpay. CarryMate does not store card or bank details directly.</p>
 
-  document.getElementById('cancelBtn').addEventListener('click', () => {
-    document.getElementById('confirmStep').style.display = 'none';
-    document.getElementById('loginStep').style.display = 'block';
-    accessToken = null;
-  });
+  <h2>Policies</h2>
+  <div class="links">
+    <a href="./terms.html">Terms & Conditions</a>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./delete-account.html">Delete Account</a>
+  </div>
 
-  document.getElementById('deleteBtn').addEventListener('click', async () => {
-    const statusEl = document.getElementById('deleteStatus');
-    const btn = document.getElementById('deleteBtn');
-    btn.disabled = true;
-    btn.textContent = 'Deleting...';
-    try {
-      const res = await fetch(SUPABASE_URL + '/functions/v1/delete-account', {
-        method: 'POST',
-        headers: {
-          'apikey': ANON_KEY,
-          'Authorization': 'Bearer ' + accessToken,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({}),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        showStatus(statusEl, data.error || 'Could not delete your account. Please try again or contact support@carrymate.in.', 'error');
-        btn.disabled = false;
-        btn.textContent = 'Yes, Permanently Delete My Account';
-        return;
-      }
-      showStatus(statusEl, 'Your account has been permanently deleted. Thank you for using CarryMate.', 'success');
-      document.getElementById('deleteBtn').style.display = 'none';
-      document.getElementById('cancelBtn').style.display = 'none';
-    } catch (err) {
-      showStatus(statusEl, 'Something went wrong. Please try again or contact support@carrymate.in.', 'error');
-      btn.disabled = false;
-      btn.textContent = 'Yes, Permanently Delete My Account';
-    }
-  });
-</script>
+  <div class="contact-box">
+    <strong>Contact us:</strong> supportcm@gmail.com<br>
+    <strong>Based in:</strong> Chennai, Tamil Nadu, India
+  </div>
+
+</div>
+
 </body>
 </html>
