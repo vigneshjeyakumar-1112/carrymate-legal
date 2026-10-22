@@ -1,138 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CarryMate — Send Anything, Anywhere, With Someone Already Going There</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Anvias | Coming soon</title>
+<meta name="description" content="Anvias is working on something new. Coming soon.">
 <style>
   :root {
-    --bg: #ffffff;
-    --surface: #f7f8fa;
-    --border: #e2e5ea;
+    --bg: #f6f7f5;
     --text: #1a1a1a;
-    --text-muted: #6b7280;
-    --accent: #0A7A5A;
+    --muted: #666b66;
+    --accent: #0a7a5a;
+    --line: #dfe3df;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #14161a;
-      --surface: #1c1f26;
-      --border: #2a2e35;
-      --text: #eef0f3;
-      --text-muted: #a3a9b3;
-      --accent: #4ade80;
+      --bg: #101412;
+      --text: #f0f2f0;
+      --muted: #9aa39c;
+      --accent: #3ecf9c;
+      --line: #26302a;
     }
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
   body {
-    margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-  }
-  .hero {
-    background: var(--accent);
-    color: #fff;
-    padding: 56px 20px 48px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
     text-align: center;
   }
-  .hero h1 { font-size: 30px; margin: 0 0 10px; }
-  .hero p { font-size: 16px; opacity: 0.9; max-width: 480px; margin: 0 auto; }
-  .container { max-width: 680px; margin: 0 auto; padding: 40px 20px 64px; }
-  h2 { font-size: 20px; margin-top: 40px; margin-bottom: 12px; color: var(--accent); }
-  p, li { font-size: 15px; color: var(--text); }
-  ul { padding-left: 20px; }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 12px;
+  main { max-width: 520px; }
+  .mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--accent);
+    margin: 0 auto 24px;
   }
-  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
+  h1 {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
   }
-  .card h3 { font-size: 15px; margin: 0 0 6px; }
-  .card p { font-size: 13px; color: var(--text-muted); margin: 0; }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 16px;
+  .tag {
+    font-size: 1.15rem;
+    margin: 0 0 8px;
   }
-  .links a {
-    display: inline-block;
-    padding: 10px 18px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    color: var(--text);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
+  .sub {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
   }
-  .contact-box {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-top: 40px;
-    font-size: 14px;
-    color: var(--text-muted);
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--muted);
   }
+  footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
+  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-
-<div class="hero">
-  <h1>CarryMate</h1>
-  <p>A platform connecting people who need to send packages or items with travelers already heading in that direction — and a marketplace to buy, sell, or request items across cities and countries.</p>
-</div>
-
-<div class="container">
-
-  <h2>What CarryMate Does</h2>
-  <p>CarryMate connects two kinds of independent users:</p>
-  <div class="grid">
-    <div class="card">
-      <h3>📦 Senders</h3>
-      <p>People who need a package delivered, matched with a traveler already going that way.</p>
-    </div>
-    <div class="card">
-      <h3>✈️ Travelers</h3>
-      <p>People traveling who can carry an item along their route and earn money for it.</p>
-    </div>
-  </div>
-  <p style="margin-top: 12px;">CarryMate also includes <strong>Discover</strong>, a marketplace where users can buy, sell, or request items to be brought from another city or country.</p>
-
-  <h2>How It Works</h2>
-  <ul>
-    <li>A sender posts a delivery request, or a buyer posts an item they want or have for sale</li>
-    <li>A matching traveler or interested user responds</li>
-    <li>Both parties agree, payment is collected securely, and the handover is confirmed with photo and OTP verification at each step</li>
-    <li>Funds are released to the traveler once delivery is confirmed</li>
-  </ul>
-
-  <h2>Payments</h2>
-  <p>All payments on CarryMate are processed securely through Razorpay. CarryMate does not store card or bank details directly.</p>
-
-  <h2>Policies</h2>
-  <div class="links">
-    <a href="./terms.html">Terms & Conditions</a>
-    <a href="./refund-policy.html">Refund & Cancellation Policy</a>
-    <a href="./refund-policy.html">Refund & Cancellation Policy</a>
-    <a href="./privacy-policy.html">Privacy Policy</a>
-    <a href="./delete-account.html">Delete Account</a>
-  </div>
-
-  <div class="contact-box">
-    <strong>Contact us:</strong> supportcm@gmail.com<br>
-    <strong>Based in:</strong> Chennai, Tamil Nadu, India
-  </div>
-
-</div>
-
+  <main>
+    <div class="mark" aria-hidden="true"></div>
+    <h1>Anvias</h1>
+    <p class="tag">Something new is on its way.</p>
+    <p class="sub">We’re working on our first app. Please check back soon.</p>
+  </main>
+  <footer>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="refund-policy.html">Refund Policy</a>
+  </footer>
 </body>
 </html>
